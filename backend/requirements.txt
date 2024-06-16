@@ -4,3 +4,4 @@ flask
 fastembed
 pdfplumber
 chromadb
+flask-cors

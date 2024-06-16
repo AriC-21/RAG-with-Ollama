@@ -7,8 +7,11 @@ from langchain_community.vectorstores import Chroma
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
 from langchain.prompts import PromptTemplate 
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
 
 folder_path = "db"
 cached_llm = Ollama(model="llama3")
@@ -26,6 +29,11 @@ raw_prompt = PromptTemplate.from_template("""
         Answer: 
     [/INST]                                   
     """)
+
+@app.route('/data')
+def get_data():
+    return {'data': 'This is some data from the Flask backend'}
+
 @app.route("/ask_pdf", methods=["POST"])
 def aiPost():
     print("Post /ask_pdf called")
