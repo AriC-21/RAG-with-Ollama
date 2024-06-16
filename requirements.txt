@@ -1,0 +1,6 @@
+langchain_community
+langchain
+flask
+fastembed
+pdfplumber
+chromadb
